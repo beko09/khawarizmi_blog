@@ -1,12 +1,11 @@
-
 <?php include "include/header.php"; ?>
 <!--  start wrap -->
 <div class="wrap">
-<!-- nav hear -->
-<?php include "include/nav.php"; ?>
-    <section class="site-section py-lg">
-      <div class="container">
-        <div class="row blog-entries element-animate">
+  <!-- nav hear -->
+  <?php include "include/nav.php"; ?>
+  <section class="site-section py-lg">
+    <div class="container">
+      <div class="row blog-entries element-animate">
 
         <?php 
          if (isset($_GET['post'])) {
@@ -16,11 +15,11 @@
            header("Location:index.php");
          }
         ?>
-         <?php 
+        <?php 
  if(get_single_post($post_id) === false) {
      echo "<div class='alert alert-danger col-12'> لاتوجد منشورات </div>";
   ?>
-<?php
+        <?php
 
 }else {
          
@@ -39,12 +38,11 @@ foreach (get_single_post($post_id) as $posts) {
         $tags = $posts['post_tags'];
         $image = $posts['post_image'];
     ?>
-          <div class="col-md-12 col-lg-8 main-content">
-          <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" class="img-fluid mb-5"
-              >
-            <div class="post-meta">
-              <span class="author mr-2">
-                <?php 
+        <div class="col-md-12 col-lg-8 main-content">
+          <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" class="img-fluid mb-5">
+          <div class="post-meta">
+            <span class="author mr-2">
+              <?php 
                     if($author_pic){
                       echo "<img width='30px' height='30px' src='$author_pic'
                      alt='$author' class='mr-2'>";
@@ -53,36 +51,36 @@ foreach (get_single_post($post_id) as $posts) {
                      alt='$author'>";
                     }
                     ?>
-                  <?php echo $author; ?></span>&bullet;
-              <span class="mr-2"><?php echo $date; ?> </span> &bullet;
-             
-            </div>
-            <h1 class="mb-4"><?php echo $title; ?></h1>
-             <?php
+              <?php echo $author; ?></span>&bullet;
+            <span class="mr-2"><?php echo $date; ?> </span> &bullet;
+
+          </div>
+          <h1 class="mb-4"><?php echo $title; ?></h1>
+          <?php
               $all_tag = explode(",",$tags);
                foreach($all_tag as $tag){
                  echo "<a class='category mb-5' href=''>$tag</a>";
                }
              ?>
-             
-            <div class="post-content-body">
-            
-             <?php echo $content; ?>
-            </div>
-            
-            
-            
-            <div class="pt-5">
-              <p>Categories: <a href="#"><?php echo '#'.$category; ?></a>
-                </p>
-            </div>
-          
+
+          <div class="post-content-body">
+
+            <?php echo $content; ?>
           </div>
-<?php
+
+
+
+          <div class="pt-5">
+            <p>Categories: <a href="#"><?php echo '#'.$category; ?></a>
+            </p>
+          </div>
+
+        </div>
+        <?php
 }
 }
 ?>
-          <div class="col-md-12 col-lg-4 sidebar">
+        <div class="col-md-12 col-lg-4 sidebar">
           <div class="sidebar-box search-form-wrap">
             <form action="search.php" class="search-form" method="post">
               <div class="form-group">
@@ -91,22 +89,22 @@ foreach (get_single_post($post_id) as $posts) {
               </div>
             </form>
           </div>
-            <!-- peson info -->
-           
+          <!-- peson info -->
 
-            <!--  sidebar here -->
-         <?php include "include/sidebar.php"; ?>
+
+          <!--  sidebar here -->
+          <?php include "include/sidebar.php"; ?>
 
           <!-- categories here -->
           <?php include "include/categories.php"; ?>
 
           <!--  tags here -->
           <?php include "include/tags.php"; ?>
-          </div>
-
         </div>
-      </div>
-    </section>
-   
 
-<?php include "include/footer.php"; ?>
+      </div>
+    </div>
+  </section>
+
+
+  <?php include "include/footer.php"; ?>

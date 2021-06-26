@@ -14,9 +14,9 @@
         <li><a href="../index.php">رؤية الموقع</a></li>
 
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> 
-            <?php echo $user; ?>
-            <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                <?php echo $user; ?>
+                <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                     <a href="#"><i class="fa fa-fw fa-user"></i> البروفايل</a>
@@ -31,7 +31,7 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-           <?php 
+            <?php 
             if($_SESSION['role']==0){
                 echo '<li>
                 <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> لوحة الادارة</a>
@@ -41,10 +41,11 @@
             }
            ?>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-send"></i> المقالات <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-send"></i>
+                    المقالات <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
-                        
+
                         <?php 
                         if($_SESSION['role']== 0){
                             echo '<a href="posts.php">عرض المقالات</a>';
@@ -56,13 +57,13 @@
                         ?>
                     </li>
                     <li>
-                        <a href="posts.php?to=add_new">اضافة مقال</a>
+                        <a href="posts.php?to=add_post">اضافة مقال</a>
                     </li>
 
                 </ul>
             </li>
-            
-             <?php 
+
+            <?php 
             if($_SESSION['role']==0){
                 echo '<li>
                 <a href="categories.php"><i class="fa fa-fw fa-suitcase"></i> الاقسام</a>
@@ -72,7 +73,7 @@
             }
            ?>
 
-           <?php  
+            <?php  
            if ($_SESSION['role']==0) {
                echo '<li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#users"><i class="fa fa-fw fa-users"></i> المستخدمين <i class="fa fa-fw fa-caret-down"></i></a>
@@ -92,7 +93,7 @@
 
            }
            ?>
-            
+
             <li>
                 <a href="profile.php"><i class="fa fa-fw fa-user"></i> البروفايل</a>
             </li>

@@ -1,45 +1,3 @@
-
-<?php 
-
-// add post function
-// function add($title, $content, $tags, $image, $author, $slug, $category, $status)
-// {
-//     // global $post_obj;
-//     if ($target = upload($image, "post_images/", true)) {
-//         $title = ucwords($title);
-//         $data = [$title, $content, $category, $tags, $target, $author, $status, $slug];
-//         if ($post_obj->addPost($data)) {
-//             return true;
-//         }
-//         return false;
-//     }
-//     return false;
-// }
-
-// save 
-
-// if (isset($_POST['save'])) {
-//     $title = $_POST['title'];
-//     $content = $_POST['content'];
-//     $tags = $_POST['tags'];
-//     $category = $_POST['categories'];
-//     $image = $_FILES['image'];
-//     $author = $user;
-//     $slug = create_slug($title);
-//     $status = (isset($_POST['status']) ? true : false);
-
-//     if (add($title, $content, $tags, $image, $author, $slug, $category, $status)) {
-//         $msg = "<div class='alert alert-success'>Post added successfully</div>";
-//     } else {
-//         $msg = "<div class='alert alert-danger'>Something went wrong!</div>";
-//     }
-// }
-
-
-
-
-?>
-
 <?php
 
 if (isset($_POST['publish'])) {
@@ -60,7 +18,16 @@ if (isset($_POST['publish'])) {
                 echo "not uploaded";
             }
         }
-        add_post($category_id,$userId,$content,$date,$target_file,$title,$post_status,$tags);
+       
+        if (add_post($category_id,$userId,$content,$date,$target_file,$title,$post_status,$tags)) {
+              if($_SESSION['role']== 0){
+                           header("Location: posts.php");
+                        }elseif($_SESSION['role']== 1) {
+                            header("Location: posts_user.php");
+                        }else{
+                             header("Location: index.php");
+                        }
+        }
     }
 
 ?>
@@ -73,13 +40,13 @@ if (isset($_POST['publish'])) {
     }
     //php echo $_SERVER['PHP_SELF']; 
     ?>
-    <form action="<?php echo $_SERVER['PHP_SELF'].'?to=add_new'; ?>" method="post" enctype="multipart/form-data" >
+    <form action="<?php echo $_SERVER['PHP_SELF'].'?to=add_post'; ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label >العنوان</label>
+            <label>العنوان</label>
             <input type="text" name="title" class="form-control" placeholder="عنوان المقال">
         </div>
         <div class="form-group">
-            <input type="hidden" name="userId"  class="form-control" value="<?php echo $_SESSION['user_id']; ?>">
+            <input type="hidden" name="userId" class="form-control" value="<?php echo $_SESSION['user_id']; ?>">
         </div>
 
         <div class="form-group">
@@ -100,7 +67,7 @@ if (isset($_POST['publish'])) {
         <div class="form-group">
             <label for="">الاقسام</label>
             <select name="cat_id" class="form-control">
-               <?php
+                <?php
 
                 if (load_category()) {
                     foreach (load_category() as $category) {
@@ -110,12 +77,12 @@ if (isset($_POST['publish'])) {
                     }
                 }
 
-                ?> 
+                ?>
 
             </select>
 
         </div>
-     
+
         <?php 
         if ($_SESSION['role']==0) {
             echo '<div class="form-group">
@@ -130,7 +97,7 @@ if (isset($_POST['publish'])) {
             echo "";
         }
         ?>
-        
+
 
         <div class="col-lg-12">
             <div class="col-lg-6">
@@ -141,11 +108,11 @@ if (isset($_POST['publish'])) {
         </div>
     </form>
 </div>
- <script>
+<script>
     //  CKEDITOR.replace('editor');
-       ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
- </script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>

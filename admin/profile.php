@@ -30,17 +30,20 @@
                     <div class="col-lg-8">
                         <form action="process.php" method="post">
                             <div class="form-group">
-                                * مطلوب<input type="text" name="username" id="username" class="form-control" placeholder="اسم المستخدم" value="<?php echo $author; ?>">
+                                * مطلوب<input type="text" name="username" id="username" class="form-control"
+                                    placeholder="اسم المستخدم" value="<?php echo $author; ?>">
                             </div>
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label for="">الصورة</label>
                                 <input type="file" name="post_img">
                             </div>
                             <div class="form-group">
-                                * مطلوب<input type="email" name="email" id="email" class="form-control" placeholder="الايميل" value="<?php echo $email; ?>">
+                                * مطلوب<input type="email" name="email" id="email" class="form-control"
+                                    placeholder="الايميل" value="<?php echo $email; ?>">
                             </div>
                             <div class="form-group">
-                                * مطلوب<textarea name="الوصف" placeholder="Description" cols="5" rows="5" class="form-control"><?php echo $pio; ?></textarea>
+                                * مطلوب<textarea name="الوصف" placeholder="Description" cols="5" rows="5"
+                                    class="form-control"><?php echo $pio; ?></textarea>
                             </div>
                             <!-- <div class="form-group">
                                 <input type="text" name="facebook" class="form-control" placeholder="Facebook Username" value="<?php //echo $details->fb; ?>">
@@ -58,22 +61,23 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                     <div class="sidebar-box card ">
-              <div class="bio text-center mt-5">
-                <img src="admin/images/<?php echo $author_pic; ?>" alt="Image Placeholder" class="img-fluid">
-                <div class="bio-body">
-                  <h2><?php echo $author; ?></h2>
-                  <p><?php echo $pio; ?></p>
-                
-                  <p class="social">
-                    <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
-                  </p>
-                </div>
-              </div>
-            </div>
+                    <div class="sidebar-box card ">
+                        <div class="bio text-center mt-5">
+                            <img src="admin/images/<?php echo $author_pic; ?>" alt="Image Placeholder"
+                                class="img-fluid">
+                            <div class="bio-body">
+                                <h2><?php echo $author; ?></h2>
+                                <p><?php echo $pio; ?></p>
+
+                                <p class="social">
+                                    <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
+                                    <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
+                                    <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
+                                    <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,5 +91,3 @@
 
 </div>
 <!-- wrapper -->
-
-<?php include "includes/footer.php"; ?>

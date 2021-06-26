@@ -1,8 +1,8 @@
 <?php include "include/header.php"; ?>
 <!--  start wrap -->
 <div class="wrap">
-<!-- nav hear -->
-<?php include "include/nav.php"; ?>
+  <!-- nav hear -->
+  <?php include "include/nav.php"; ?>
   <section class="site-section py-sm">
     <div class="container">
       <div class="row">
@@ -13,10 +13,10 @@
       <div class="row blog-entries">
         <div class="col-md-12 col-lg-8 main-content">
           <div class="row">
-           <!-- posts here -->
-           <?php include "include/search_post.php"; ?>
+            <!-- posts here -->
+            <?php include "include/search_post.php"; ?>
           </div>
-        
+
         </div>
 
         <div class="col-md-12 col-lg-4 sidebar">
@@ -29,8 +29,8 @@
             </form>
           </div>
 
-         <!--  sidebar here -->
-         <?php include "include/sidebar.php"; ?>
+          <!--  sidebar here -->
+          <?php include "include/sidebar.php"; ?>
 
           <!-- categories here -->
           <?php include "include/categories.php"; ?>
@@ -42,4 +42,4 @@
       </div>
     </div>
   </section>
-<?php include "include/footer.php"; ?>
+  <?php include "include/footer.php"; ?>

@@ -19,7 +19,7 @@ include 'includes/header.php';
 			<div class="row">
 
 				<h1 class="page-header">
-					  مرحبًا بك في لوحة الإدارة
+					مرحبًا بك في لوحة الإدارة
 				</h1>
 				<?php
 
@@ -27,13 +27,16 @@ include 'includes/header.php';
 				if (isset($_GET['to'])) {
 					$to = $_GET['to'];
 
-					if ($to == "add_new") {
-						include_once "includes/addpost.php";
-					} else {
+					if ($to == "add_post") {
+						include "includes/addpost.php";
+						
+					} elseif ($to == "edit_post"){
+						include "includes/edit_post.php";
+					}else {
 						if($_SESSION['role']== 0){
-							include_once "includes/post.php";
+							include "includes/post.php";
 						}elseif($_SESSION['role']== 1) {
-							include_once "posts_user.php";
+							include "posts_user.php";
 						}else{
 							  include "../index.php";
 						}
@@ -41,12 +44,12 @@ include 'includes/header.php';
 				} 
 				else {
 					if($_SESSION['role']== 0){
-							include_once "includes/post.php";
-						}elseif($_SESSION['role']== 1) {
-							include_once "posts_user.php";
-						}else{
+							include "includes/post.php";
+					}elseif($_SESSION['role']== 1) {
+							include "posts_user.php";
+					}else{
 							  include "../index.php";
-						}
+					}
 				}
 				?>
 			</div>
@@ -65,6 +68,3 @@ include 'includes/header.php';
 
 </div>
 <!-- wrapper -->
-
-<?php include "includes/footer.php"; ?>
-

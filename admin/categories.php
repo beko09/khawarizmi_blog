@@ -75,15 +75,15 @@ if (isset($_GET['delete_cat'])) {
                         <?php
                         if (load_category()) {
                         ?>
-                            <table class="table table-hover table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>اسم القسم</th>
-                                        <th colspan="2">اجراء</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
+                        <table class="table table-hover table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>اسم القسم</th>
+                                    <th colspan="2">اجراء</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                                     foreach (load_category() as  $category) {
                                         $id = $category['cat_ID'];
                                         $cat = $category['cat_title'];
@@ -129,4 +129,3 @@ if (isset($_GET['delete_cat'])) {
         console.log(error);
     }
 </script>
-<?php include "includes/footer.php"; ?>

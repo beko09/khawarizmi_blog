@@ -126,11 +126,11 @@ function add_post($category_id,$userId,$content,$date,$target_file,$title,$post_
       $sql ="INSERT INTO posts (cat_id,user_id,post_content,post_date,post_image,post_title,post_status,post_tags) 
       VALUES ('$category_id','$userId','$content','$date','$target_file','$title','$post_status','$tags')";
       if($conn->query($sql) === TRUE){
-          header('Location: posts.php');
+          return true;
+        //   header('Location: posts.php');
       }else {
-          header('Location: posts.php?to=add_new');
+          header('Location: posts.php?to=add_post');
       }
-
 }
 
 
@@ -162,12 +162,24 @@ function add_post($category_id,$userId,$content,$date,$target_file,$title,$post_
 
   function load_posts_user($user_id){
       global $conn;
-        $sql = "SELECT * FROM posts 
+        function check($user_id) {
+            global $conn;
+            $sql = "SELECT user_id FROM posts WHERE user_id=$user_id";
+            $result = $conn->query($sql);
+             if ($result->num_rows > 0) {
+                return true;
+                } else {
+                return false;
+                }
+        }
+        if(check($user_id)){
+             $sql = "SELECT * FROM posts 
                 INNER JOIN categories ON posts.cat_id=categories.cat_ID 
                 INNER JOIN users ON posts.user_id=users.user_ID
                 WHERE user_id=$user_id
                 ";
         $result = $conn->query($sql);
+         die($result);
      
         if ($result->num_rows > 0) {
         $data = $result->fetch_all(MYSQLI_ASSOC);
@@ -175,9 +187,14 @@ function add_post($category_id,$userId,$content,$date,$target_file,$title,$post_
         } else {
          return false;
         }
+        }else {
+            return false;
+        }
+       
  }
 
 
+ 
 
 /**
  * This function get user info
@@ -268,6 +285,36 @@ function modify_status($col_status,$table,$col,$id){
 
 
 
+/**
+ * This function load all detail about one
+ * post and show him in single post page
+ */
+
+function single_post($post_id){
+        global $conn;
+        $sql = "SELECT * FROM posts WHERE post_ID = $post_id";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+        $data = $result;
+        return $data;
+        } else {
+         return false;
+        }  
+}
+
+
+
+function update_post($category_id,$userId,$content,$date,$target_file,$title,$post_status,$tags,$postID){
+    global $conn;
+    $sql = "UPDATE posts SET cat_id='$category_id',user_id='$userId',post_content='$content',post_date='$date',post_image='$target_file',post_title='$title',post_status='$post_status',post_tags='$tags' WHERE post_ID='$postID'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+    return true;
+    } else {
+        return false;
+    }  
+
+}
 
 
 
@@ -278,7 +325,23 @@ function modify_status($col_status,$table,$col,$id){
 
 
 
-
+  function load_posts_user1($user_id){
+      global $conn;
+             $sql = "SELECT * FROM posts 
+                WHERE user_id=$user_id
+                ";
+        $result = $conn->query($sql);
+        //  die($result);
+     
+        if ($result->num_rows > 0) {
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+        return $data;
+        } else {
+         return false;
+        }
+        
+       
+ }
 
 
 
