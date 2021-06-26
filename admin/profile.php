@@ -24,10 +24,33 @@
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <h1 class="page-header">
-                        مرحب بك في البروفايل
-                    </h1>
-                    <div class="col-lg-8">
+                     <h4 class="page-header">
+                            مرحب بك في البروفايل
+                        </h4>
+                    <div class="sidebar-box card profile">
+                        <div class="bio text-center mt-5">
+                            <?php 
+                            if($author_pic){ ?>
+                            <img src="../<?php echo $author_pic ;?>" alt="Image Placeholder" class="img-fluid">
+                            <?php
+                            }else {
+                                 echo '<img src="admin/images/default.png" alt="Image Placeholder"
+                                class="img-fluid">';
+                            }
+                            ?>
+                            <div class="bio-body">
+                                <h2><?php echo $author; ?></h2>
+                                <p><?php echo $pio; ?></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="edit_profile">
+                        <h4 class="page-header">
+                            تعديل البروفايل
+                        </h4>
                         <form action="process.php" method="post">
                             <div class="form-group">
                                 * مطلوب<input type="text" name="username" id="username" class="form-control"
@@ -60,25 +83,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="sidebar-box card ">
-                        <div class="bio text-center mt-5">
-                            <img src="admin/images/<?php echo $author_pic; ?>" alt="Image Placeholder"
-                                class="img-fluid">
-                            <div class="bio-body">
-                                <h2><?php echo $author; ?></h2>
-                                <p><?php echo $pio; ?></p>
 
-                                <p class="social">
-                                    <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
-                                    <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
-                                    <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
-                                    <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- row -->

@@ -5,14 +5,16 @@
           <div class="user_navbar">
              <ul class="navbar-nav mr-auto d-flex flex-row align-items-center">
             <li class="nav-item">
-              <a class="nav-link active" href="index.php">
+            
                  <?php
                   if ($_SESSION) {
                   
                   ?>
                     <div class="mt-2 mb-2">
                     <div class="d-flex justify-content-center text-center flex-row">
-                      <img width="30px" height="30px" class="img-responsive img_user" src="<?php echo $_SESSION['user_pic']; ?>" alt="<?php echo $_SESSION['userLogin']; ?>">
+                     
+                        <img width="30px" height="30px" class="img-responsive img_user" src="<?php echo $_SESSION['user_pic']; ?>" alt="<?php echo $_SESSION['userLogin']; ?>">
+                    
                       <div><span><?php echo $_SESSION['userLogin']; ?></span></div>
                     </div>
                 </div>
@@ -72,12 +74,8 @@
               ?>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.php">عنا</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.php">اتصل بنا</a>
-            </li>
+           
+          
            <?php 
            if(!$_SESSION){
              echo '<li class="nav-item">

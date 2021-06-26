@@ -2,7 +2,7 @@
 
 if (isset($_GET['delete_post']) && $_GET['delete_post'] !== '') {
     $id = $_GET['delete_post'];
-    if (delete_post('posts','post_ID',$id)) {
+    if (delete('posts','post_ID',$id)) {
        header("Location: posts.php");
     }
 }

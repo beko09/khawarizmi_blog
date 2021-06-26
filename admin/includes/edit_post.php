@@ -1,9 +1,6 @@
 <?php
-if (isset($_GET['edit_post']) && $_GET['edit_post'] !== '') {
-           $edit_id = $_GET['edit_post'];
 
-           
-         }
+
 
 if (isset($_POST['save_edit_post'])) {
         $title = $_POST['title'];
@@ -16,7 +13,7 @@ if (isset($_POST['save_edit_post'])) {
         $date = date("l d F Y");
         $post_img = $_FILES['post_img']['name'];
         $img =  $_POST['img'];
-        if(isset($_FILES['post_img'])&& $post_image != ''){
+        if(isset($_FILES['post_img'])&& $post_img != ''){
             $dir = "/images/";
             $target_file = $dir.basename($_FILES['post_img']['name']);
             if (move_uploaded_file($_FILES['post_img']['tmp_name'],$target_file)) {
@@ -29,7 +26,7 @@ if (isset($_POST['save_edit_post'])) {
             $target_file = $img;
         }
         if (update_post($category_id,$userId,$content,$date,$target_file,$title,$post_status,$tags,$postID)) {
-            die("ok");
+            header("Location: posts.php");
         }
     }
 
@@ -38,6 +35,11 @@ if (isset($_POST['save_edit_post'])) {
 <div class="col-lg-8">
     <h2>تعديل مقال</h2>
     <?php 
+    if (isset($_GET['edit_post']) && $_GET['edit_post'] !== '') {
+           $edit_id = $_GET['edit_post'];
+
+           
+        
     // start foreach to load post data
     foreach (single_post($edit_id) as $post) {
       $post_id = $post['post_ID'];
@@ -51,7 +53,7 @@ if (isset($_POST['save_edit_post'])) {
 
 
 
-    <form action="<?php echo $_SERVER['PHP_SELF'].'?to=add_new'; ?>" method="post" enctype="multipart/form-data">
+    <form action="<?php echo $_SERVER['PHP_SELF'].'?to=edit_post'; ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>العنوان</label>
             <input type="text" name="title" class="form-control" value='<?php echo $post_title; ?>'>
@@ -65,7 +67,7 @@ if (isset($_POST['save_edit_post'])) {
             <label for="">الصورة</label>
             <input type="file" name="post_img">
             <br>
-            <input type="hidden"  name="img" value="<?php echo $post_image; ?>">
+            <input type="hidden" name="img" value="<?php echo $post_image; ?>">
             <img src="<?php echo $post_image; ?>" class="img-responsive img-rounded" height="100px" width="100%" />
         </div>
 
@@ -145,6 +147,7 @@ if (isset($_POST['save_edit_post'])) {
     <?php 
     }
     //end foreach
+     }
     ?>
 </div>
 <script>

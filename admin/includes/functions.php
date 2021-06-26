@@ -153,6 +153,22 @@ function add_post($category_id,$userId,$content,$date,$target_file,$title,$post_
         }
  }
 
+/**
+ * This function load and display 
+ *  all users form database
+ */
+
+ function loadUsers(){
+      global $conn;
+        $sql = "SELECT * FROM users";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+        return $result;
+        } else {
+         return false;
+        }
+ }
+
 
 /**
  * This function load and display 
@@ -225,7 +241,7 @@ function add_post($category_id,$userId,$content,$date,$target_file,$title,$post_
  * give prams to be deleted
  */
 
-function delete_post($table,$col,$id){
+function delete($table,$col,$id){
      global $conn;
 
     //check if this item id in database or no
@@ -307,8 +323,7 @@ function single_post($post_id){
 function update_post($category_id,$userId,$content,$date,$target_file,$title,$post_status,$tags,$postID){
     global $conn;
     $sql = "UPDATE posts SET cat_id='$category_id',user_id='$userId',post_content='$content',post_date='$date',post_image='$target_file',post_title='$title',post_status='$post_status',post_tags='$tags' WHERE post_ID='$postID'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
+    if ($conn->query($sql)) {
     return true;
     } else {
         return false;

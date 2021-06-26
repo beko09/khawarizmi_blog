@@ -1,71 +1,101 @@
-<?php include 'includes/header.php'; ?>
+<?php
 
+include 'includes/header.php';
+
+if (isset($_GET['delete_user']) && $_GET['delete_user'] !== '') {
+    $id = $_GET['delete_user'];
+    if (delete('users','user_ID',$id)) {
+       header("Location: users.php");
+    }
+}
+if (isset($_GET['approve']) && $_GET['approve'] !== '') {
+    $id = $_GET['approve'];
+    if (modify_status('is_active','users','user_ID',$id)) {
+       header("Location: users.php");
+    }
+}
+if (isset($_GET['unapprove']) && $_GET['unapprove'] !== '') {
+    $id = $_GET['unapprove'];
+    if (modify_status('is_active','users','user_ID',$id)) {
+       header("Location: users.php");
+    }
+}
+
+if (loadUsers()) :
+
+?>
 <div id="wrapper">
-
-	<!-- Navigation -->
 	<?php include 'includes/navigation.php'; ?>
-
-
 	<div id="page-wrapper">
 
 		<div class="container-fluid">
 
-			<!-- Page Heading -->
-			<div class="row">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>الاسم</th>
+							<th>الايميل</th>
+							<th>الحالة</th>
+							<th colspan="3" class="text-center">اجراء</th>
+						</tr>
+					</thead>
+					<tbody>
 
-				<h1 class="page-header">
-					Welcome to the Administration Panel
-				</h1>
-				<div class="col-lg-6 col-md-6 col-sm-12">
-					<h1 class="page-header">
-						مرحب بك في البروفايل
-					</h1>
-					<div class="col-lg-8">
-						<form action="process.php" method="post">
-							<div class="form-group">
-								* مطلوب<input type="text" name="username" id="username" class="form-control"
-									placeholder="اسم المستخدم" value="<?php echo $author; ?>">
-							</div>
-							<div class="form-group">
-								<label for="">الصورة</label>
-								<input type="file" name="post_img">
-							</div>
-							<div class="form-group">
-								* مطلوب<input type="email" name="email" id="email" class="form-control"
-									placeholder="الايميل" value="<?php echo $email; ?>">
-							</div>
-							<div class="form-group">
-								* مطلوب<textarea name="الوصف" placeholder="Description" cols="5" rows="5"
-									class="form-control"><?php echo $pio; ?></textarea>
-							</div>
-							<!-- <div class="form-group">
-                                <input type="text" name="facebook" class="form-control" placeholder="Facebook Username" value="<?php //echo $details->fb; ?>">
-                            </div> -->
-							<!-- <div class="form-group">
-                                <input type="text" name="github" class="form-control" placeholder="Github Username" value="<?php //echo $details->github; ?>">
-                            </div> -->
-							<!-- <div class="form-group">
-                                <input type="text" name="youtube" class="form-control" placeholder="Youtube Channel ID" value="<?php //echo $details->ytb; ?>">
-                            </div> -->
-							<div class="form-group">
-								<input type="submit" name="user_detail" class="btn btn-success" value="تحديث البروفايل">
-							</div>
-						</form>
-					</div>
-				</div>
+						<?php
+                foreach (loadUsers() as $users) {
+                    $user_id = $users['user_ID'];
+                    $email = $users['email'];
+                    $name = $users['name'];
+                    $status = $users['is_active'];
+                    $status = ($status?$status:"unapproved");
+                    
+                ?>
+						<tr>
+							<td><?php echo $name; ?></td>
+							<td><?php echo $email; ?></td>
+							<td><?php echo $status; ?></td>
+							 <?php
+                            if ($status === "unapproved") {?> 
+							 <td><a class="btn btn-success btn-block"
+									href="users.php?approve=<?php echo $user_id; ?>"> موافقة
+								</a></td>
+							<?php
+                            }else {
+                                ?>
+							<td><a class="btn btn-warning btn-block" href="users.php?unapprove=<?php echo $user_id; ?>">
+									عدم
+									الموافقة
+								</a>
+							</td>
+							<?php
+                            }
+                       
+                            ?>
+
+
+							<td><a href='users.php?delete_user=<?php echo $user_id; ?>'
+									class='btn btn-danger btn-block'> مسح
+								</a></td>
+						</tr>
+						<?php
+                };
+
+                ?>
+
+					</tbody>
+				</table>
 
 			</div>
 
+			<?php
+else :
+    echo "<h4 class='text-center'>لا توجد بيانات</h4>";
+endif;
+
+
+?>
 
 		</div>
-
-		<!-- /.row -->
-
 	</div>
-	<!-- /.container-fluid -->
-
 </div>
-<!-- /#page-wrapper -->
-
-</div>
-<!-- wrapper -->
