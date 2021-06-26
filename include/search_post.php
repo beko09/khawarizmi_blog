@@ -11,7 +11,7 @@ if (isset($_POST['search'])) {
 }else {
          
 foreach (search_posts($search) as $posts) {
-      $post_id = $posts['ID'];
+      $post_id = $posts['post_ID'];
       $title = $posts['post_title'];
       $content = substr($posts['post_content'], 0, 100);
        $user_id = $posts['user_id'];
@@ -29,7 +29,7 @@ foreach (search_posts($search) as $posts) {
               <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
              
                 <?php if($image){
-                    echo "<img src='admin/images/$image'  alt='$title'>";
+                    echo "<img src='$image'  alt='$title'>";
                   }else{
                   echo'';
                   };

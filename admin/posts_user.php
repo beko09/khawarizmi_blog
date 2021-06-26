@@ -43,7 +43,7 @@ include 'includes/header.php';
                     foreach($user_info as $info){
                         $author = $info['name'];
                     }
-                    $post_id = $posts['ID'];
+                    $post_id = $posts['post_ID'];
                     $title = $posts['post_title'];
                     $content = substr($posts['post_content'], 0, 100);
                     

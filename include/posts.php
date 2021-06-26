@@ -8,7 +8,7 @@
 
   foreach (show_posts() as $posts) {
     
-      $post_id = $posts['ID'];
+      $post_id = $posts['post_ID'];
       $title = $posts['post_title'];
       $content = substr($posts['post_content'], 0, 100);
       $user_id = $posts['user_id'];
@@ -25,7 +25,7 @@
       <div class="col-md-6">
               <a href="single-post.php?post=<?php echo $post_id; ?>" class="blog-entry element-animate" data-animate-effect="fadeIn">
              <?php if($image){
-              echo "<img src='admin/images/$image'  alt='$title'>";
+              echo "<img src='$image'  alt='$title'>";
             }else{
              echo'';
              };
@@ -37,7 +37,7 @@
                     <span class="author mr-2">
                     <?php 
                     if($author_pic){
-                      echo "<img width='30px' height='30px' src='admin/images/$author_pic'
+                      echo "<img width='30px' height='30px' src='$author_pic'
                      alt='$author'>";
                     }else{
                       echo "<img width='30px' height='30px' src='../images/profile/default.png'

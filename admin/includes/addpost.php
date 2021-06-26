@@ -51,7 +51,7 @@ if (isset($_POST['publish'])) {
         $category_id = $_POST['cat_id'];
         $date = date("l d F Y");
         if(isset($_FILES['post_img'])){
-            $dir = "../images/";
+            $dir = "/images/";
             $target_file = $dir.basename($_FILES['post_img']['name']);
             if (move_uploaded_file($_FILES['post_img']['tmp_name'],$target_file)) {
             
@@ -94,7 +94,7 @@ if (isset($_POST['publish'])) {
 
         <div class="form-group">
             <label for="">محتوي المقال</label>
-            <textarea name="content" id="" cols="5" rows="5" class="form-control"></textarea>
+            <textarea name="content" id="editor" cols="5" rows="5" class="form-control"></textarea>
         </div>
 
         <div class="form-group">
@@ -104,7 +104,7 @@ if (isset($_POST['publish'])) {
 
                 if (load_category()) {
                     foreach (load_category() as $category) {
-                        $cat_id = $category['ID'];
+                        $cat_id = $category['cat_ID'];
                         $cat_title = $category['cat_title'];
                         echo "<option value='$cat_id'> $cat_title</option>";
                     }
@@ -141,3 +141,11 @@ if (isset($_POST['publish'])) {
         </div>
     </form>
 </div>
+ <script>
+    //  CKEDITOR.replace('editor');
+       ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+ </script>

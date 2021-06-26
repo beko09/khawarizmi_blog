@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
         if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
             $db_user = $row['name'];
-            $db_user_id = $row['ID'];
+            $db_user_id = $row['user_ID'];
             $db_email = $row['email'];
             $db_pass = $row['password'];
             $db_pic = $row['pic'];

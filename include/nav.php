@@ -64,7 +64,7 @@
               <div class="dropdown-menu" aria-labelledby="dropdown05">
               <?php 
                   foreach(show_cat() as $cat) {
-                $cat_id = $cat["ID"];
+                $cat_id = $cat["cat_ID"];
                 $cat_title = $cat["cat_title"];
                 echo "<a class='dropdown-item' href='category.php?cat_id=$cat_id'>{$cat_title}</a>";
                 

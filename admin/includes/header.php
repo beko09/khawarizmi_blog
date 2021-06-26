@@ -67,5 +67,7 @@ if (isset($_SESSION['userLogin'])) {
 
     <!-- Bootstrap Core JavaScript -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="ckeditor5/ckeditor5-build-classic/ckeditor.js"></script>
+    
 
 <body>

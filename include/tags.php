@@ -11,7 +11,7 @@
 }else {
 
   foreach (show_tags() as $posts) {
-      $post_id = $posts['ID'];
+      $post_id = $posts['post_ID'];
       $tags = $posts['post_tags'];
       $all_tag = explode(",",$tags);
         foreach($all_tag as $tag){

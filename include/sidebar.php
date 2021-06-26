@@ -11,7 +11,7 @@
 }else {
 
   foreach (show_posts_sidebar() as $posts) {
-      $post_id = $posts['ID'];
+      $post_id = $posts['post_ID'];
       $title = $posts['post_title'];
        $user_id = $posts['user_id'];
     $user_info = get_user($user_id);
@@ -26,7 +26,7 @@
       <li>
               <a href="single-post.php?post=<?php echo $post_id; ?>">
                <?php if($image){
-                  echo "<img src='admin/images/$image'  alt='$title'>";
+                  echo "<img src='$image'  alt='$title'>";
                     }else{
                     echo'';
                     };

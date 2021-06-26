@@ -1,6 +1,5 @@
 <?php
 include 'includes/header.php';
-// include 'includes/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $category = $_POST['cat_add'];
@@ -14,14 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
+
+
 // delete category
 
 if (isset($_GET['delete_cat'])) {
     $id = $_GET['delete_cat'];
-    if (remove_cat($id)) {
-        header("Location: categories.php?message=$id+deleted+successfully");
+    if (delete_cat($id)) {
+        header("Location: categories.php");
+        $message = "<div class='alert alert-success' id='msg'> تم مسح القسم والمنشورات التي تتعلق به</div>";
     } else {
-        $message = "<div class='alert alert-danger' id='msg'>القسم مرتبطة بمنشور.</div>";
+        $message = "<div class='alert alert-danger' id='msg'>  هذا القسم غير موجود</div>";
     }
 }
 
@@ -76,7 +78,6 @@ if (isset($_GET['delete_cat'])) {
                             <table class="table table-hover table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <!-- <th>رقم المعرف</th> -->
                                         <th>اسم القسم</th>
                                         <th colspan="2">اجراء</th>
                                     </tr>
@@ -84,7 +85,7 @@ if (isset($_GET['delete_cat'])) {
                                 <tbody>
                                     <?php
                                     foreach (load_category() as  $category) {
-                                        $id = $category['ID'];
+                                        $id = $category['cat_ID'];
                                         $cat = $category['cat_title'];
                                         echo "<tr>
                                             <!-- <td>$id</td> -->

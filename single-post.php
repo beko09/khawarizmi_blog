@@ -25,7 +25,7 @@
 }else {
          
 foreach (get_single_post($post_id) as $posts) {
-      $post_id = $posts['ID'];
+      $post_id = $posts['post_ID'];
       $title = $posts['post_title'];
       $content = $posts['post_content'];
       $user_id = $posts['user_id'];
@@ -40,11 +40,20 @@ foreach (get_single_post($post_id) as $posts) {
         $image = $posts['post_image'];
     ?>
           <div class="col-md-12 col-lg-8 main-content">
-          <img src="admin/images/<?php echo $image; ?>" alt="<?php echo $title; ?>" class="img-fluid mb-5"
+          <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" class="img-fluid mb-5"
               >
             <div class="post-meta">
-              <span class="author mr-2"><img src="admin/images/<?php echo $image; ?>" alt="<?php echo $author; ?>"
-                  class="mr-2" > <?php echo $author; ?></span>&bullet;
+              <span class="author mr-2">
+                <?php 
+                    if($author_pic){
+                      echo "<img width='30px' height='30px' src='$author_pic'
+                     alt='$author' class='mr-2'>";
+                    }else{
+                      echo "<img class='mr-2' width='30px' height='30px' src='../images/profile/default.png'
+                     alt='$author'>";
+                    }
+                    ?>
+                  <?php echo $author; ?></span>&bullet;
               <span class="mr-2"><?php echo $date; ?> </span> &bullet;
              
             </div>
