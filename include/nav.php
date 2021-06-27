@@ -13,7 +13,18 @@
                     <div class="mt-2 mb-2">
                     <div class="d-flex justify-content-center text-center flex-row">
                      
-                        <img width="30px" height="30px" class="img-responsive img_user" src="<?php echo $_SESSION['user_pic']; ?>" alt="<?php echo $_SESSION['userLogin']; ?>">
+                        <img width="30px" height="30px" class="img-responsive img_user" 
+                        src="../admin/<?php 
+                          if ($_SESSION['user_pic']) {
+                            echo $_SESSION['user_pic']; 
+                          }else {
+                            echo '../images/profile/default.png';
+                          }
+                        ?>" 
+                        alt="
+                        <?php echo $_SESSION['userLogin']; ?>
+                        "
+                        >
                     
                       <div><span><?php echo $_SESSION['userLogin']; ?></span></div>
                     </div>

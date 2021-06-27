@@ -18,6 +18,9 @@
     // Create connection
     $conn = new mysqli($host, $username, $password, $db_name);
 
+    // if data coming like (???) use $mysqli -> set_charset("utf8");
+    // link  https://www.w3schools.com/php/func_mysqli_set_charset.asp
+
     // Check connection status
     if($conn->connect_error){
       die("Connection failed: ".$conn->connect_error);

@@ -108,7 +108,7 @@ function show_tags(){
 
 function search_posts($search){
         global $conn;
-        $sql = "SELECT * FROM posts WHERE post_title LIKE '%$search%'";
+        $sql = "SELECT * FROM posts WHERE post_title LIKE '%$search%' AND post_status='approve'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
         $data = $result;

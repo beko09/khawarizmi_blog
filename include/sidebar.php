@@ -26,7 +26,7 @@
       <li>
               <a href="single-post.php?post=<?php echo $post_id; ?>">
                <?php if($image){
-                  echo "<img src='$image'  alt='$title'>";
+                  echo "<img src='../admin/$image'  alt='$title'>";
                     }else{
                     echo'';
                     };

@@ -23,9 +23,9 @@ if (isset($_GET['cat_id'])){
   ?>
   
       <div class="post-entry-horzontal">
-                  <a href="single.php?post=<?php echo $post_id; ?>">
+                  <a href="single-post.php?post=<?php echo $post_id; ?>">
                     <div class="image element-animate" data-animate-effect="fadeIn"
-                      style="background-image:url('..<?php echo $image; ?>')"></div>
+                      style="background-image:url('../admin/<?php echo $image; ?>')"></div>
                     <span class="text">
                       <div class="post-meta">
                         <span class="author mr-2">
@@ -33,7 +33,7 @@ if (isset($_GET['cat_id'])){
 
                         <?php 
                     if($author_pic){
-                      echo "<img width='30px' height='30px' src='$author_pic'
+                      echo "<img width='30px' height='30px' src='../admin/$author_pic'
                      alt='$author'>";
                     }else{
                       echo "<img width='30px' height='30px' src='../images/profile/default.png'

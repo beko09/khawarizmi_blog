@@ -25,7 +25,7 @@
       <div class="col-md-6">
               <a href="single-post.php?post=<?php echo $post_id; ?>" class="blog-entry element-animate" data-animate-effect="fadeIn">
              <?php if($image){
-              echo "<img src='$image'  alt='$title'>";
+              echo "<img src='../admin/$image'  alt='$title'>";
             }else{
              echo'';
              };
@@ -37,7 +37,7 @@
                     <span class="author mr-2">
                     <?php 
                     if($author_pic){
-                      echo "<img width='30px' height='30px' src='$author_pic'
+                      echo "<img width='30px' height='30px' src='../admin/$author_pic'
                      alt='$author'>";
                     }else{
                       echo "<img width='30px' height='30px' src='../images/profile/default.png'

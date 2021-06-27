@@ -1,15 +1,16 @@
 <?php
 
+
 if (isset($_POST['publish'])) {
         $title = $_POST['title'];
         $userId = $_POST['userId'];;
-        $content = $_POST['content'];
+        $content = strip_tags($_POST['content']);
         $tags = $_POST['tags'];
         $post_status = $_POST['status'];
         $category_id = $_POST['cat_id'];
         $date = date("l d F Y");
         if(isset($_FILES['post_img'])){
-            $dir = "/images/";
+            $dir = "images/";
             $target_file = $dir.basename($_FILES['post_img']['name']);
             if (move_uploaded_file($_FILES['post_img']['tmp_name'],$target_file)) {
             
@@ -38,7 +39,6 @@ if (isset($_POST['publish'])) {
     if (isset($msg)) {
         echo $msg;
     }
-    //php echo $_SERVER['PHP_SELF']; 
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF'].'?to=add_post'; ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">

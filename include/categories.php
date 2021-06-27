@@ -13,7 +13,7 @@
                 foreach(show_cat_sidebar() as $cat) {
                 $cat_id = $cat["cat_ID"];
                 $cat_title = $cat["cat_title"];
-                echo "<li><a href='category.php?cat_id=$cat_id'>{$cat_title}<span>(12)</span></a></li>";
+                echo "<li><a href='category.php?cat_id=$cat_id'>{$cat_title}</a></li>";
                 
                   }}
               ?>

@@ -2,7 +2,7 @@
 include 'includes/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $category = $_POST['cat_add'];
+    $category = $_POST['category'];
     $msg = "";
     if ($category != "") {
        add_cat($category);
@@ -21,9 +21,9 @@ if (isset($_GET['delete_cat'])) {
     $id = $_GET['delete_cat'];
     if (delete_cat($id)) {
         header("Location: categories.php");
-        $message = "<div class='alert alert-success' id='msg'> تم مسح القسم والمنشورات التي تتعلق به</div>";
+        $msg_del = "<div class='alert alert-success' id='msg'> تم مسح القسم والمنشورات التي تتعلق به</div>";
     } else {
-        $message = "<div class='alert alert-danger' id='msg'>  هذا القسم غير موجود</div>";
+        $msg_del = "<div class='alert alert-danger' id='msg'>  هذا القسم غير موجود</div>";
     }
 }
 
@@ -59,7 +59,7 @@ if (isset($_GET['delete_cat'])) {
                                 <input type="text" name="category" placeholder="اسم القسم" class="form-control">
                             </div>
                             <div class="form-group">
-                                <input type="submit" name="cat_add" value="اضافة قسم" class="btn btn-primary">
+                                <input type="submit" class="btn btn-primary">
                             </div>
                         </form>
 
@@ -67,8 +67,8 @@ if (isset($_GET['delete_cat'])) {
                     <div class="col-sm-6">
                         <?php
 
-                        if (isset($message)) {
-                            echo $message;
+                        if (isset($msg_del)) {
+                            echo $msg_del;
                         }
 
                         ?>

@@ -56,8 +56,17 @@
                         }
                         ?>
                     </li>
+                   
                     <li>
-                        <a href="posts.php?to=add_post">اضافة مقال</a>
+                         <?php 
+                        if ($_SESSION['status'] == 'approve' && $_SESSION['role']== 1) {
+                            echo '<a href="posts.php?to=add_post">اضافة مقال</a>';
+                        }elseif($_SESSION['role']==0){
+                              echo '<a href="posts.php?to=add_post">اضافة مقال</a>';
+                        }else {
+                            echo "";
+                        }
+                        ?>
                     </li>
 
                 </ul>
@@ -83,7 +92,7 @@
                         <a href="users.php">عرض كل المستخدمين</a>
                     </li>
                     <li>
-                        <a href="users.php?to=add_user">اضافة مستخدمين</a>
+                        <a href="../register.php">اضافة مستخدمين</a>
                     </li>
 
                 </ul>

@@ -33,9 +33,8 @@
  * in database
  */
 
-  function add_cat(){
+  function add_cat($cat_title){
       global $conn;
-      $cat_title = $_POST['category'] ;
       $stmt = $conn->prepare("INSERT INTO categories (cat_title) VALUES (?)");
       $stmt->bind_param("s", $categories);
       $categories = $cat_title;
@@ -359,6 +358,16 @@ function update_post($category_id,$userId,$content,$date,$target_file,$title,$po
  }
 
 
+ function update_user($name,$email,$target_file,$pio,$user_id){
+    global $conn;
+    $sql = "UPDATE users SET user_ID='$user_id',name='$name',email='$email',pic='$target_file',pio='$pio' WHERE user_ID='$user_id'";
+    if ($conn->query($sql)) {
+    return true;
+    } else {
+        return false;
+    }  
+
+}
 
 
 

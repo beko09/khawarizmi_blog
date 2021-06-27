@@ -3,7 +3,6 @@ ob_start();
 session_start();
 include "db.php";
 include "functions.php";
-// include "./helper.php";
 
 if (isset($_SESSION['userLogin'])) {
     $user = $_SESSION['userLogin'];
@@ -11,22 +10,6 @@ if (isset($_SESSION['userLogin'])) {
 }else {
     header("Location:../blog_admin.php?error=1");
 }
-
-// if (!isset($_SESSION['blog_id'])) {
-//     header("Location: ../auth/auth.php");
-// }
-
-// $user = $_SESSION['blog_user'];
-// $user_id = $_SESSION['blog_id'];
-
-// include_once "../class/database.php";
-// include_once "../class/Auth.php";
-// include_once "../class/Category.php";
-// include_once "../class/Posts.php";
-
-// $auth = new Authentication;
-// $category_obj = new Category;
-// $post_obj = new Posts;
 
 ?>
 

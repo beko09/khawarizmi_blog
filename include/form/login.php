@@ -7,16 +7,13 @@
     } 
 
 include "../../admin/includes/db.php";
-$error = [];
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
      if (empty($email)) {
-        array_push($error,"<p class='alert alert-danger'> الايميل ضروري</p>");
-       header("Location:../../blog-admin.php?error= الايميل ضروري");
+       header("Location:../../login.php?error_login= الايميل ضروري");
     } elseif(empty($pass)){
-          array_push($error,"<p class='alert alert-danger'>كلمة السر  ضروري</p>");
-       header("Location:../../blog-admin.php?error= كلمة السر ضروري");
+       header("Location:../../login.php?error_login= كلمة السر ضروري");
     }else {
         $sql = "SELECT * FROM users WHERE email='$email'";
         $result = $conn->query($sql);
@@ -28,6 +25,7 @@ if (isset($_POST['login'])) {
             $db_pass = $row['password'];
             $db_pic = $row['pic'];
             $role = $row['role'];
+            $status = $row['is_active'];
             $rehashpass = md5($pass);
             if ($email === $db_email && $db_pass === $rehashpass) {
                 $_SESSION['userLogin']= $db_user;
@@ -35,7 +33,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['email']= $email;
                 $_SESSION['role']= $role;
                 $_SESSION['user_pic']= $db_pic;
-                // echo $_SESSION['userLogin'];
+                $_SESSION['status']= $status;
                 if($role==0){
                     header("Location: ../../admin/index.php");
 
@@ -43,13 +41,11 @@ if (isset($_POST['login'])) {
                 header("Location: ../../admin/posts_user.php");
                 }
             }else{
-                // $_SESSION['login_email']= $email;
-                array_push($error,"<p class='alert alert-danger'>كلمة السر  او الايميل غير صحيحين</p>");
-                header("Location: ../../blog_admin.php?error=wrong_login");
+                header("Location: ../../login.php?error_login=كلمة السر  او الايميل غير صحيحين");
             }
         }
     }else{
-         header("Location:../../blog_admin.php?wrong_login");
+         header("Location:../../login.php?error_login=دخول غير مصرح");
     }
       
     }

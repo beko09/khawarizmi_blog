@@ -1,23 +1,23 @@
 <?php
 include "../../admin/includes/db.php";
-$error = [];
 if (isset($_POST['register'])) {
     $user = clean($_POST['username']);
     $email = clean($_POST['email']);
     $pass = $_POST['password'];
     if (empty($user)) {
-        array_push($error,"<p class='alert alert-danger'>اسم المستخدم ضروري</p>");
-       header("Location:../../blog-admin.php?error=اسم المستخدم ضروري");
+       header("Location:../../register.php?error_reg=اسم المستخدم ضروري");
     }elseif(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-          array_push($error,"<p class='alert alert-danger'>الايميل غير صحيح</p>");
-        header("Location:../../blog-admin.php?error=الايميل غير صحيح");
+        header("Location:../../register.php?error_reg=الايميل غير صحيح");
     }elseif (empty($email)){
-         array_push($error,"<p class='alert alert-danger'> الايميل ضروري</p>");
-       header("Location:../../blog-admin.php?error=الايميل  ضروري");
+       header("Location:../../register.php?error_reg=الايميل  ضروري");
     
-    }elseif (strlen($pass) <= 5){
-         array_push($error,"<p class='alert alert-danger'> كلمة السر  قصيرة </p>");
-       header("Location:../../blog-admin.php?error=كلمة السر  قصيرة");
+    }elseif (empty($pass)){
+       header("Location:../../register.php?error_reg=كلمة السر  ضرورية");
+    
+    }
+    
+    elseif (strlen($pass) <= 5){
+       header("Location:../../register.php?error_reg=كلمة السر  قصيرة");
     } else {
         if (empty($error)) {
             // global $conn;

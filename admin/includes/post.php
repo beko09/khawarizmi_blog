@@ -46,7 +46,7 @@ if (loadPosts()) :
                     }
                     $post_id = $posts['post_ID'];
                     $title = $posts['post_title'];
-                    $content = substr($posts['post_content'], 0, 100);
+                    $content = substr($posts['post_content'], 0, 20);
                     $category=load_one_category($posts['cat_id']);
                     $status = $posts['post_status'];
                     $status = ($status?$status:"unapproved");

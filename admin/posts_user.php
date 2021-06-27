@@ -68,7 +68,7 @@ if (load_posts_user1($_SESSION['user_id'])) :
                                 <td>
                                     <?php 
                             if($image){
-                                echo "<img src='images/$image' width='50px' />";
+                                echo "<img src='$image' width='50px' />";
                             }else {
                                 echo "لا توجد صورة";
                             }
@@ -76,7 +76,7 @@ if (load_posts_user1($_SESSION['user_id'])) :
                                 </td>
 
 
-                                <td><?php echo "<a href='posts_user.php.php?edit=$post_id' class='btn btn-info btn-block'> Edit
+                                <td><?php echo "<a href='posts.php.php?edit=$post_id' class='btn btn-info btn-block'> Edit
                         </a>" ?></td>
                                 <td><?php echo "<a href='posts_user.php?delete_post=$post_id' class='btn btn-danger btn-block'> Delete
                         </a>" ?></td>

@@ -177,5 +177,15 @@
 	contentWayPoint();
 
 
+    // remove message after 5 second
+    try {
+        let msg = document.getElementById('msg');
+        setTimeout(() => {
+            msg.style.display = "none";
+        }, 5000);
+    } catch (error) {
+        console.log(error);
+    }
+
 
 })(jQuery);

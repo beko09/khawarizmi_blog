@@ -39,12 +39,12 @@ foreach (get_single_post($post_id) as $posts) {
         $image = $posts['post_image'];
     ?>
         <div class="col-md-12 col-lg-8 main-content">
-          <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" class="img-fluid mb-5">
+          <img src="../admin/<?php echo $image; ?>" alt="<?php echo $title; ?>" class="img-fluid mb-5">
           <div class="post-meta">
             <span class="author mr-2">
               <?php 
                     if($author_pic){
-                      echo "<img width='30px' height='30px' src='$author_pic'
+                      echo "<img width='30px' height='30px' src='../admin/$author_pic'
                      alt='$author' class='mr-2'>";
                     }else{
                       echo "<img class='mr-2' width='30px' height='30px' src='../images/profile/default.png'

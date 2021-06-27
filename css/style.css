@@ -1433,6 +1433,14 @@ html[dir="rtl"] header .navbar .dropdown-menu:before {
 .user_navbar .nav-link {
       color: rgba(0,0,0,.5);
 }
+.link_color {
+  color: #fa843f;
+}
+
+.link_color:hover {
+  color: #6c7dad;
+}
+
 .img_user {
   margin-left: 1rem;
   border-radius: 50%;
